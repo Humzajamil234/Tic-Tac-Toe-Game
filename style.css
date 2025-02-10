@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    background-image: url(https://media.istockphoto.com/id/1443725051/photo/business-marketing-strategy-planning-concept-hand-holding-wooden-block-tic-tac-toe-board-game.jpg?s=612x612&w=0&k=20&c=SfxA8EJpY2lx9tYxNEiiTQSBsGHxNBfor6eElQ1kPXs=);
+    background-size: 230vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+
+}
+
+.game-container {
+    text-align: center;
+    width: 90%;
+    max-width: 450px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease;
+}
+
+.game-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #3498db;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: underline black;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    margin-bottom: 20px;
+}
+
+.square {
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
+    background-color: #ecf0f1;
+    border: 3px solid #bdc3c7;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.square:hover {
+    background-color: antiquewhite;
+    transform: scale(1.05);
+}
+
+.square.x {
+    color: #3498db;
+}
+
+.square.o {
+    color: #e74c3c;
+}
+
+.game-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#status {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #333;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border: none;
+    background-color: #2ecc71;
+    color: white;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color: #27ae60;
+}
+
+@media screen and (max-width: 600px) {
+    .game-title {
+        font-size: 1.8rem;
+    }
+
+    .square {
+        font-size: 2rem;
+    }
+
+    #status {
+        font-size: 1.2rem;
+    }
+}
+
+/* Previous CSS remains unchanged... */
+
+@keyframes confettiAnimation {
+    0% { transform: translateY(-100px) rotate(0deg); opacity: 0.7; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 1; }
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ff6347;
+    border-radius: 50%;
+    opacity: 0;
+    animation: confettiAnimation 1s forwards;
+}
+
+@keyframes winningPulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.square.winning {
+    animation: winningPulse 1s infinite;
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 0 0 rgba(255, 223, 0, 0.7); }
+    100% { box-shadow: 0 0 20px 20px rgba(255, 223, 0, 0); }
+}
+
+.square.winning {
+    animation: glow 1.5s infinite alternate;
+}
